@@ -17,16 +17,21 @@ body {
 #header {
   width: 100%;
   height: 100vh;
-  background-image: url(images/compu6.jpeg);
+  background: url(images/compu6.jpeg) right no-repeat;
   background-size: contain;
-  background-position: right;
-  background-repeat: no-repeat;
+  overflow: hidden;
+  transition: background 0.5s;
+}
+
+#header:hover {
+  background: url(images/compu6_glitch1.jpg) right no-repeat; /* Cambia la imagen a la versión con el efecto de color */
+  background-size: contain;
 }
 
 .container {
   padding: 10px 10%;
 }
-
+ 
 nav {
   width: 100%;
   position: fixed;
@@ -80,6 +85,13 @@ nav ul li a:hover::after {
 }
 
 /*about*/
+.text-con-fondo-oscuro {
+  width: 45%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con transparencia */
+  color: white; /* Color del texto */
+  padding: 10px; /* Espaciado alrededor del texto para mayor claridad */
+}
+
 #about {
   padding: 80px 0;
   color: #ababab;
@@ -94,10 +106,36 @@ nav ul li a:hover::after {
 .about-col-1 {
   flex-basis: 35%;
 }
-.about-col-1 img {
-width: 100%;
-border-radius: 15px;
+
+.about-col-1 .image-container {
+  position: relative;
+  width: 100%;
 }
+
+.about-col-1 .original-image {
+  width: 100%;
+  border-radius: 15px;
+  transition: opacity 0.5s;
+}
+
+.about-col-1 .gif-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 15px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.about-col-1 .image-container:hover .original-image {
+  opacity: 0;
+}
+
+.about-col-1 .image-container:hover .gif-image {
+  opacity: 1;
+}
+
 
 .about-col-2 {
   flex-basis: 60%;
@@ -406,5 +444,8 @@ nav .fa-solid {
   }
   .copyright {
     font-size: 14px;
+  }
+  .text-con-fondo-oscuro {
+    width: 90%;
   }
 }
